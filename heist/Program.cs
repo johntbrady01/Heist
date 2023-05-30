@@ -9,6 +9,14 @@ namespace heist
         {
             Console.WriteLine("Plan Your Heist!");
 
+            Random rnd = new Random();
+            int Luck = rnd.Next(-10, 10);
+
+            int BanksDifficullty = 100;
+            int TeamsSkill = 0;
+
+            BanksDifficullty += Luck;
+
             int i = 0;
 
             List<TeamMember> TeamList = new List<TeamMember>() { };
@@ -47,7 +55,22 @@ namespace heist
                 Console.WriteLine($"{Member.Name}, Skill Level:{Member.SkillLevel},Courage Level:{Member.Courage} ");
             }
             */
+            foreach (TeamMember Member in TeamList)
+            {
+                TeamsSkill += Member.SkillLevel;
+            }
 
+            Console.WriteLine($"Banks difficulty:{BanksDifficullty}");
+            Console.WriteLine($"Teams overall skill:{TeamsSkill}");
+
+            if (TeamsSkill >= BanksDifficullty)
+            {
+                Console.WriteLine("Success! Your team succeeded in your heist!");
+            }
+            else
+            {
+                Console.WriteLine("Failure! Your team was not skilled enough!");
+            }
 
         }
     }
